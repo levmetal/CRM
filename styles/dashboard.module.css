@@ -1,0 +1,232 @@
+.dashboard{
+    height: 100vh; 
+    padding: 0 1rem;
+    background-color: #f8f8f8;;
+}
+
+.dashboard h1 {
+   height: 4rem;
+   margin-top: 1rem;
+   color: #0077b6;
+}
+
+.dashboard .ticket_container{
+   display: flex;
+   flex-wrap: wrap;
+   height: 80vh;
+   width: 100%;
+   border-radius: .8rem;
+   transition: 300ms;
+   padding: 1rem;
+   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   overflow-y: scroll;
+   row-gap: 2rem;
+}
+.ticket_container .category_tickets {
+   display: flex;
+   flex-wrap: wrap;
+   row-gap: 1rem;
+   min-height: 10rem;
+   min-width: 100%;
+   justify-content: center;
+   
+}
+.button_ticket_container{
+   display: flex;
+   align-items: center;
+   min-width: 100%;
+   
+   gap: 1rem;
+}
+.ticket_container .category_tickets h3{
+   color: #0077b6;
+   width: 100%;
+   row-gap: 1rem;
+}
+
+.ticket_container .category_tickets .ticket {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100%;
+   min-height: 6rem;
+   align-items: center;
+   border-radius: 2rem;
+   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   transition: 300ms;
+   background-color: #ffffff;
+   padding: 1rem;
+   row-gap: 1rem;
+   column-gap: 1rem;
+  
+}
+
+
+.ticket_container .category_tickets  .ticket:hover{
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+   .ticket .owner{
+      display:flex;
+      justify-content: center;
+      flex: 1;
+      min-width:10rem;
+      border-bottom:.1rem solid #0077b6 ;
+      
+      padding-bottom:.1rem ;
+      height:3rem;
+      align-items:center;
+      font-weight: bold;
+      
+     
+   }
+
+.btn_container{
+   display: none;
+  
+}
+ 
+.userDisplay{
+   display: flex;
+  flex: 1;
+   height: 5.5rem;
+   min-width:5rem ;
+   justify-content: center;
+   overflow: hidden;
+   
+  
+   align-items: center;
+   
+}
+.userDisplay >img{
+   height: 5rem;
+   width: 5rem;
+   border-radius: 50%;
+  
+}
+.delete_container{
+   border-radius: 100%;
+   border: none;
+   padding: .5rem;
+   background-color: #ffffff;
+   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   transition: 300ms;
+}
+.delete_container:hover{
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
+   rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+.delete_icon{
+   fill: #0077b6;
+}
+
+.title_ticket{
+   display:flex;
+   text-align: center;
+   align-items: center;
+   flex: 1;
+   height: 100%;
+   min-width: 10rem;
+   padding: 1rem;
+
+  
+
+}
+.status{
+   display: flex;
+   align-items: center;
+   height: 6rem;
+   min-width: 7rem;
+   padding: .7rem;
+   border-radius: 1rem;
+   justify-content: center;
+   font-size: .8rem;
+   flex:1;
+   
+}
+.status h2::first-letter{
+
+   text-transform: uppercase;
+
+}
+
+.container_priority{
+   display: flex;
+   font-size: 2rem;
+   flex: 1;
+   justify-content: center;
+   width: 10rem;  
+}
+
+.progress_container{
+
+   display: flex;
+   height: 100%;
+   align-items: center;
+   justify-content: center;
+   min-width: 10rem;
+   flex: 1;
+
+}
+.progress_bar{
+   height: 2rem;
+   background-color: #c9c9c9;
+   width: 90%;
+   border-radius: 1rem;
+   overflow: hidden;
+}
+.progress{
+   display: flex;
+   background-color: #0077b6;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+
+   
+}
+.progress span{
+   color: #fff;
+   font-weight: bold;
+}
+
+
+
+
+@media screen and (max-width: 600px)  {
+  
+   
+   .btn_container{
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+
+
+   }
+   .btn{
+      border-radius: 100%;
+      border: none;
+      height: 2rem;
+      width: 2rem;
+      background-color: #ffffff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      transition: 300ms;
+
+   }
+   .btn:hover{
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
+   rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+   }
+
+   .delete_container{
+      display:none;
+   }
+}
+
+
+
+
+
+
+
+
