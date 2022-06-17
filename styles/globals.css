@@ -1,9 +1,8 @@
 html,
 body {
-
   padding: 0;
   margin: 0;
-  font-family: -apple-system, Roboto, BlinkMacSystemFont, Segoe UI,Oxygen,
+  font-family: -apple-system, Roboto, BlinkMacSystemFont, Segoe UI, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -12,20 +11,22 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
-.green{
-  background-color:rgba(1, 161, 36, 0.3)  ;
-  box-shadow:  rgba(0, 163, 49, 0.3) 0 0 10px 1px;
+
+.green {
+  background-color: rgba(1, 161, 36, 0.3);
+  box-shadow: rgba(0, 163, 49, 0.3) 0 0 10px 1px;
 }
-.red{
+.red {
   background-color: rgba(243, 3, 3, 0.3);
-  box-shadow:  rgba(243, 3, 3, 0.3) 0 0 10px 1px;
+  box-shadow: rgba(243, 3, 3, 0.3) 0 0 10px 1px;
 }
-.orange{
+.orange {
   background-color: rgba(236, 154, 2, 0.3);
-  box-shadow:  rgba(236, 154, 2, 0.3) 0 0 10px 1px;
+  box-shadow: rgba(236, 154, 2, 0.3) 0 0 10px 1px;
 }

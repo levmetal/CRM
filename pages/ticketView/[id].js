@@ -1,4 +1,9 @@
-const Test =()=>(
-    <h1>hola id</h1>
-)
-export default Test
+
+import { useRouter } from "next/router"
+
+import ticketForm from "./index"
+
+
+export default ticketForm
+
+

@@ -1,4 +1,153 @@
-.ticketView_container{
-    height: 100vh;
+.ticketView_container {
+  height: 100vh;
+  max-width: 100%;
+  color: #f0f8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+.ticketView_container h1 {
+  width: 100%;
+  height: max-content;
+  color: #303030;
+  text-align: center;
+}
+.form_container {
+  display: flex;
+  justify-content: center;
+
+  width: 80%;
+  flex-wrap: wrap;
+  border-radius: 1rem;
+  background-color: #0d1d50;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  row-gap: 0;
+}
+
+.form_container .body_form,
+.user {
+  flex: 1;
+  display: flex;
+
+  flex-direction: column;
+  height: 100%;
+  row-gap: 1rem;
+  padding: 1rem;
+}
+
+.user .owner_view,
+.user .avatar_view,
+.title_view,
+.description_view,
+.category_view,
+.new_category,
+.multiple_input_container,
+.status_view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5rem;
+}
+.user .owner_view input,
+.user .avatar_view input,
+.title_view input,
+.description_view input,
+.category_view select,
+.new_category input,
+
+.status_view select {
+  width: 15rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0 0.5rem;
+}
+.user .owner_view label,
+.user .avatar_view label,
+.title_view label,
+.description_view label,
+.category_view label,
+.new_category label,
+.status_view label,
+ 
+.progress_view label {
+  width: 15rem;
+  height: 1rem;
+}
+
+.input_container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+  
+  
+}
+.multiple_input_container input[type='radio'] {
+ 
+  background-color: #f0f8ff;
+  margin: 0;
+  
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid ;
+  border-radius: 50%;
+}
+.multiple_input_container >input[type='radio']:checked{
+ 
+  background: #0077b6 ;
+}
+
+
+
+.progress_view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.3rem;
+}
+.progress_view input[type='range'] {
+  width: 15rem;
+  height: 2rem;
+  accent-color: #0077b6;
+}
+
+.button {
+  height: 2rem;
+  flex-basis: 30rem;
+  max-width: 100%;
+  border-radius: 1rem;
+  border: none;
+  background-color: #f0f8ff;
+  margin: 1rem;
+}
+.avatar_preview{
+  border-radius: 100%;
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+ 
+  height: 10rem;
+  width: 10rem;
+  overflow: hidden;
+}
+.avatar_preview img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  
+
+  
+}
+@media only screen and (max-width: 750px) {
+  .form_container {
     width: 100%;
+  }
 }
