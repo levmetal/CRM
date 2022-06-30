@@ -12,7 +12,7 @@ if(bool){
   await deleteTicket()
 }else return null
 
-router.push("/dashboard")
+router.push("/")
 }
 
 const deleteTicket = async ()=>{
@@ -30,17 +30,16 @@ const deleteTicket = async ()=>{
     <button 
    
     className={styles.delete_container}>
-      <svg
-        onClick={confirmDeleting}
-        className={styles.delete_icon}
-        xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        viewBox="0 0 24 24"
-        width="24px"
-        
-      >
-        <path d="M0 0h24v24H0V0z" fill="none" />
-        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+     
+      <svg 
+       onClick={confirmDeleting}
+       className={styles.delete_icon}
+         xmlns="http://www.w3.org/2000/svg" 
+         width="48" height="48" 
+         >
+          <path d="M13.05 42q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.5H8v-3h9.4V6h13.2v1.5H40v3h-2.05V39q0 1.2-.9 2.1-.9.9-2.1.9Zm21.9-31.5h-21.9V39h21.9Zm-16.6 24.2h3V14.75h-3Zm8.3 0h3V14.75h-3Zm-13.6-24.2V39Z"/>
+
+
       </svg>
     </button>
   )

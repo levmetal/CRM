@@ -1,5 +1,7 @@
+
 html,
 body {
+  overflow: hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, Roboto, BlinkMacSystemFont, Segoe UI, Oxygen,
@@ -19,14 +21,14 @@ a {
 }
 
 .green {
-  background-color: rgba(1, 161, 36, 0.3);
+  background-color: rgba(1, 161, 36, 0.5);
   box-shadow: rgba(0, 163, 49, 0.3) 0 0 10px 1px;
 }
-.red {
-  background-color: rgba(243, 3, 3, 0.3);
+.bred {
+  background-color: #f2001483;
   box-shadow: rgba(243, 3, 3, 0.3) 0 0 10px 1px;
 }
 .orange {
-  background-color: rgba(236, 154, 2, 0.3);
+  background-color: rgba(236, 154, 2, 0.5);
   box-shadow: rgba(236, 154, 2, 0.3) 0 0 10px 1px;
 }

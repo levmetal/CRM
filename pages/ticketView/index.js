@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from 'styles/ticketView.module.css'
 import { v4 as uuidv4 } from 'uuid'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 const TicketView = () => {
   const router =useRouter()
@@ -15,6 +16,11 @@ const TicketView = () => {
     description: '',
     avatar:""
   })
+
+  const [isSubmiting,setSubmiting]=useState(false)
+  const [errors,setErrors]=useState({})
+
+
   const getTicket= async ()=>{
     const res = await fetch(`http://localhost:3000/api/tickets/${router.query.id}`)
     const data = await res.json()
@@ -38,10 +44,11 @@ const TicketView = () => {
     
 
   const handleChange = (e) => {
-    e.preventDefault()
+   
    
     const value = e.target.value
     const name = e.target.name
+
 
     setFormData((prevState) => ({
       ...prevState,
@@ -50,16 +57,55 @@ const TicketView = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
- 
-    if(router.query.id){
-      await updateTicket()
-    }else await createTicket()
-    
-    await router.push("/dashboard")
+   e.preventDefault()
+   
+   let err=validate()
+   if (Object.keys(err).length) return setErrors(err);
+   
+   setSubmiting(true)
+  console.log(errors)
+
+    if (router.query.id) {
+      await updateTicket();
+    } else{
+
+      await createTicket();
+    }
+
+    await router.push("/")
   }
 
-  
+  const validate =()=>{
+      let error={}
+      if(!formData.category){
+        error.category="Category is required"
+      }
+
+      if(!formData.priority){
+        error.priority="Priority is required"
+      }
+
+      if(!formData.owner){       
+        error.owner="Owner is required"
+      }
+
+      if(!formData.title){        
+        error.title="Title is required"
+      }
+      if(!formData.progress){
+        error.progress="Progress is required"
+      }
+      
+        if(!formData.description){   
+          error.description="Description is required"
+        }
+
+      if(!formData.avatar){ 
+        error.avatar="Avatar is required"
+      }
+        return error
+    }
+
 
   const createTicket= async ()=>{
       try {
@@ -91,12 +137,93 @@ const TicketView = () => {
     }
   }
 
-  const categories = [" ",'test1', 'test2']
+  const categories = [" ","Q1-2022", 'Q2-2022',"Q3-2022"]
 
+  const scale={
+    init:{
+      scale: [2, 5, 5, 2, 2],
+      color:"black",
+      transition:{
+        duration: 2,
+        type:"spring",
+        damping:100,
+        stiffness:500
+             },
+    }
+  }
+  const customerror={
+    errorsanimeted:{
+      scale:[1,1.2,1],
+      transition:{
+        duration: .5,
+        type:"spring",
+        damping:100,
+        stiffness:500
+             },
+             color:"red"
+    
+    }
+
+  }
   return (
     <div className={styles.ticketView_container}>
-      <h1>{(!router.query.id ?`Create ticket`:`Update ticket`)}</h1>
+      
+      
+      {isSubmiting ? <motion.p 
+        variants={scale}
+        animate="init"
+        transition={{
+          repeat:true
+        }}
+        
+        >
+          Loading</motion.p>
+          
+          :(  
+            <> 
+           
+
+
       <form onSubmit={handleSubmit} className={styles.form_container}>
+      <section className={styles.user}>
+          <div className={styles.owner_view}>
+            <label htmlFor="owner">Owner</label>
+            <input
+              type="text"
+              onChange={handleChange}
+              name="owner"
+             
+              value={formData.owner}
+              placeholder="Owner"
+            />
+            {errors.owner && !formData.owner? <motion.p 
+           variants={customerror}
+           animate="errorsanimeted"
+            >{errors.owner}</motion.p>:null}
+            
+          </div>
+
+          <div className={styles.avatar_view}>
+            <label htmlFor="avatar">Avatar</label>
+            <input
+              type="url"
+              placeholder="URL"
+              onChange={handleChange}
+              name="avatar"
+              
+              value={formData.avatar}
+            />
+             
+
+            <div className={styles.avatar_preview}>
+            <img  src={formData.avatar?`${formData.avatar}`:`avatar-default.png`} alt="avatar-preview" />
+               
+              
+            </div>
+            {errors.avatar && !formData.avatar? <motion.p  variants={customerror}
+           animate="errorsanimeted">{errors.avatar}</motion.p>:null}
+          </div>
+        </section>
         <section className={styles.body_form}>
           <div className={styles.title_view}>
             <label htmlFor="title_view"> Title </label>
@@ -105,9 +232,11 @@ const TicketView = () => {
               placeholder="Title"
               name="title"
               onChange={handleChange}
-              required={true}
+             
               value={formData.title}
             />
+            {errors.title && !formData.title? <motion.p  variants={customerror}
+           animate="errorsanimeted">{errors.title}</motion.p>:null}
           </div>
           <div className={styles.description_view}>
             <label htmlFor="description"> Description </label>
@@ -116,19 +245,26 @@ const TicketView = () => {
               placeholder="Description"
               name="description"
               onChange={handleChange}
-              required={true}
+              
               value={formData.description}
             />
+            {errors.description && !formData.description? <motion.p  variants={customerror}
+           animate="errorsanimeted">{errors.description}</motion.p>:null}
           </div>
           <div className={styles.category_view}>
             <label htmlFor="category">Category</label>
-            <select name="category" value={formData.category} onChange={handleChange}>
+            <select 
+            name="category" 
+            value={formData.category} 
+            onChange={handleChange}>
               {categories.map((category) => (
                 <option key={uuidv4()} >
                   {category}
                 </option>
               ))}
             </select>
+            {errors.category && !formData.category ? <motion.p variants={customerror}
+           animate="errorsanimeted">{errors.category}</motion.p>:null}
           </div>
 
           <div className={styles.new_category}>
@@ -138,24 +274,27 @@ const TicketView = () => {
               placeholder="New category"
               name="category"
               onChange={handleChange}
-              required={true}
+              
               value={formData.category}
             />
+            
           </div>
-          <div className={styles.multiple_input_container}>
-          <label>Priority</label>
-          <div className={styles.input_container}>
+          <div  className={styles.multiple_input_container}>
 
+          <label>Priority</label>
+          
+            <div className={styles.input_container }>
        
               <input
                 id="priority-1"
                 name="priority"
                 type="radio"
-                onChange={handleChange}
                 value={1}
+                onChange={handleChange}
                 checked={formData.priority == 1}
-              />
-              <label htmlFor="priority-1">1</label>
+                />
+            <label htmlFor="priority-1">1
+            </label>
               <input
                 id="priority-2"
                 name="priority"
@@ -172,7 +311,7 @@ const TicketView = () => {
                 onChange={handleChange}
                 value={3}
                 checked={formData.priority == 3}
-              />
+                />
               <label htmlFor="priority-3">3</label>
               <input
                 id="priority-4"
@@ -181,7 +320,7 @@ const TicketView = () => {
                 onChange={handleChange}
                 value={4}
                 checked={formData.priority == 4}
-              />
+                />
               <label htmlFor="priority-4">4</label>
               <input
                 id="priority-5"
@@ -190,13 +329,16 @@ const TicketView = () => {
                 onChange={handleChange}
                 value={5}
                 checked={formData.priority == 5}
-              />
+                />
               <label htmlFor="priority-5">5</label>
+                </div>
+              {errors.priority && !formData.priority ? <motion.p  variants={customerror}
+           animate="errorsanimeted">{errors.priority}</motion.p>:null}
               </div>
-          </div>
+         
 
           <div className={styles.progress_view}>
-            <label htmlFor="progress">Progress</label>
+            <label htmlFor="progress">Progress  {`:   ${formData.progress}% `}</label>
             <input
               type="range"
               onChange={handleChange}
@@ -205,6 +347,8 @@ const TicketView = () => {
               max={100}
               value={formData.progress}
             />
+             {errors.progress && !formData.progress ? <motion.p  variants={customerror}
+           animate="errorsanimeted">{errors.progress}</motion.p>:null}
           </div>
 
           <div className={styles.status_view}>
@@ -215,7 +359,7 @@ const TicketView = () => {
               onChange={handleChange}
             >
               <option defaultValue={formData.status === 'done'} name="done">
-                Done
+                done
               </option>
               <option
                 defaultValue={formData.status === 'in process'}
@@ -224,47 +368,26 @@ const TicketView = () => {
                 in process
               </option>
               <option defaultValue={formData.status === 'standby'} name="standby">
-                Standby
+                standby
               </option>
             </select>
           </div>
         </section>
 
-        <section className={styles.user}>
-          <div className={styles.owner_view}>
-            <label htmlFor="owner">Owner</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              name="owner"
-              required={true}
-              value={formData.owner}
-              placeholder="Owner"
-            />
-          </div>
-
-          <div className={styles.avatar_view}>
-            <label htmlFor="avatar">Avatar</label>
-            <input
-              type="url"
-              placeholder="URL"
-              onChange={handleChange}
-              name="avatar"
-              required={true}
-              value={formData.avatar}
-            />
-
-            <div className={styles.avatar_preview}>
-              {formData.avatar && (
-                <img src={formData.avatar} alt="avatar-preview" />
-              )}
-            </div>
-          </div>
-        </section>
-        <button className={styles.button} formAction="onSubmit">
-          Add
-        </button>
+        <motion.button 
+        whileHover={{
+          
+          scale: 1.05,
+          transition: { duration: .3 },
+        }}
+        whileTap={{ scale: 1 }}
+        className={styles.button} formAction="onSubmit" >
+         {router.query.id? "Update": "Create"}
+        </motion.button>
+        
       </form>
+      </>
+      )}
     </div>
   )
 }

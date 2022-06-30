@@ -1,69 +1,19 @@
 import Link from 'next/link'
 
 import styles from '../styles/layout.module.css'
-import { useState } from 'react'
+
 
 const Navbar = () => {
-  const [menu, setMenu] = useState(false)
-
-  const ActiveMenu = () => {
-    setMenu(!menu)
-  }
+  
+  
 
   return (
-    <nav className={!menu ? styles.nav : styles.nav_active + ' ' + styles.nav}>
-      <a onClick={ActiveMenu}>
-        <svg
-          className={
-            !menu ? styles.arrow : styles.arrow_close + ' ' + styles.arrow
-          }
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
-          fill="#000000"
-        >
-          <path d="M0,0h24v24H0V0z" fill="none" />
-          <path
-            d="M3,18h13v-2H3V18z M3,13h10v-2H3V13z 
-            M3,6v2h13V6H3z M21,15.59L17.42,12L21,8.41L19.59,7l-5,5l5,5L21,15.59z"
-          />
-        </svg>
-
-        <svg
-          className={
-            !menu
-              ? styles.icon_menu
-              : styles.icon_menu_close + ' ' + styles.icon_menu_close
-          }
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 0 24 24"
-          width="24px"
-          fill="#000000"
-        >
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
-      </a>
+    <nav className={styles.nav}>
+     
       <ul>
-        <Link href="/">
-          <a>
-            <svg
-              className={styles.home}
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 0 24 24"
-              width="24px"
-              fill="#000000"
-            >
-              <path d="M0 0h24v24H0V0z" fill="none" />
-              <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" />
-            </svg>
-          </a>
-        </Link>
+        
 
-        <Link href="/dashboard">
+        <Link href="/">
           <a>
             <svg
               className={styles.icon_dash}

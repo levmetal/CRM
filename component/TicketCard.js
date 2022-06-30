@@ -2,6 +2,8 @@ import styles from '../styles/dashboard.module.css'
 import Ticket from './Ticket'
 import DeleteBlock from './DeleteBlock'
 import EditBlock from './EditBlock'
+
+
 import { v4 as uuidv4 } from 'uuid'
 const TicketCard = (props) => {
 
@@ -25,6 +27,7 @@ const TicketCard = (props) => {
 
   return (
     <div className={styles.ticket_container}>
+      
       {ticketsarr[0] &&
         uniqueCategories?.map((uniqueCategory) => (
           <div className={styles.category_tickets} key={uuidv4()}>
@@ -41,6 +44,7 @@ const TicketCard = (props) => {
                     <Ticket
                       key={uuidv4()}
                       ticket={ticketFiltered}
+                      
                     />
 
                     <EditBlock 

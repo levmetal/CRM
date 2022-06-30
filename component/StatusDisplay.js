@@ -4,7 +4,7 @@ const StatusDisplay = ({ status }) => {
   const statusSelection = {
     done: 'green',
     'in process': 'orange',
-    standby: 'red',
+    standby: 'bred',
   }
 
   const statuscolor = statusSelection[status]

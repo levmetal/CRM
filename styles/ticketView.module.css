@@ -74,6 +74,7 @@
 .category_view label,
 .new_category label,
 .status_view label,
+.multiple_input_container :nth-child(1),
  
 .progress_view label {
   width: 15rem;
@@ -91,17 +92,13 @@
 }
 .multiple_input_container input[type='radio'] {
  
-  background-color: #f0f8ff;
+  accent-color: #0077b6;
   margin: 0;
-  
   width: 1.15em;
   height: 1.15em;
   border: 0.15em solid ;
   border-radius: 50%;
-}
-.multiple_input_container >input[type='radio']:checked{
  
-  background: #0077b6 ;
 }
 
 
@@ -146,6 +143,9 @@
 
   
 }
+
+
+
 @media only screen and (max-width: 750px) {
   .form_container {
     width: 100%;
