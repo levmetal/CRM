@@ -21,8 +21,10 @@ const TicketView = () => {
   const [errors, setErrors] = useState({})
 
   const getTicket = async () => {
+   
+
     const res = await fetch(
-      `http://localhost:3000/api/tickets/${router.query.id}`,
+      `/api/tickets/${router.query.id}`,
     )
     const data = await res.json()
     setFormData({
@@ -102,7 +104,7 @@ const TicketView = () => {
 
   const createTicket = async () => {
     try {
-      await fetch('http://localhost:3000/api/tickets', {
+      await fetch('/api/tickets', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +118,7 @@ const TicketView = () => {
 
   const updateTicket = async () => {
     try {
-      await fetch(`http://localhost:3000/api/tickets/${router.query.id}`, {
+      await fetch(`api/tickets/${router.query.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
