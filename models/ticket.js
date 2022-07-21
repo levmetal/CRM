@@ -22,7 +22,7 @@ const TicketSchema = new Schema(
     title: {
       type: String,
       required: [true, 'title is required'],
-   
+
       maxlength: [100, 'no more than 50 characters'],
       trim: true,
     },

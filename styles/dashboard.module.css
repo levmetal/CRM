@@ -2,6 +2,7 @@
   height: 100vh;
   padding: 0rem 1rem;
   background-color: #f0f8ff;
+  margin: auto;
 }
 
 .title_dash {
@@ -105,8 +106,6 @@
   background-color: #ffffff;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   transition: 300ms;
- 
- 
 }
 .delete_container:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
@@ -114,10 +113,9 @@
 }
 .delete_icon {
   margin: -50%;
-  transform: scale(.5);
+  transform: scale(0.5);
   fill: #0077b6;
 }
-
 
 .edit_container {
   border-radius: 100%;
@@ -138,7 +136,6 @@
   transform: scale(0.5);
   fill: #0077b6;
 }
-
 
 .title_ticket {
   display: flex;
@@ -199,7 +196,6 @@
   font-weight: bold;
 }
 
-
 @media screen and (max-width: 600px) {
   .btn_container {
     display: flex;
@@ -220,8 +216,8 @@
       rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   }
 
-  .delete_container ,.edit_container{
+  .delete_container,
+  .edit_container {
     display: none;
   }
-  
 }

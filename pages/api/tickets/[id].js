@@ -9,7 +9,6 @@ export default async function (req, res) {
     method,
     query: { id },
   } = req
-  console.log(id)
 
   switch (method) {
     case 'GET':

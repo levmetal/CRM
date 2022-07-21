@@ -1,21 +1,12 @@
 import TicketCard from '../component/TicketCard'
 import styles from '../styles/dashboard.module.css'
 
-
-
 const Dashboard = (props) => {
-  
-  
-
-   
-  
   return (
     <div className={styles.dashboard}>
       <h1 className={styles.title_dash}>Ticket list </h1>
-      
-      <TicketCard tickets={props}
-      
-      />
+
+      <TicketCard tickets={props} />
     </div>
   )
 }
@@ -26,7 +17,7 @@ export async function getServerSideProps(context) {
   const tickets = await res.json()
 
   return {
-    props:{
+    props: {
       tickets,
     },
   }

@@ -2,17 +2,10 @@ import Link from 'next/link'
 
 import styles from '../styles/layout.module.css'
 
-
 const Navbar = () => {
-  
-  
-
   return (
     <nav className={styles.nav}>
-     
       <ul>
-        
-
         <Link href="/">
           <a>
             <svg
