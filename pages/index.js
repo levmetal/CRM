@@ -13,7 +13,7 @@ const Dashboard = (props) => {
 export default Dashboard
 
 export async function getServerSideProps(context) {
-  const res = await fetch('http://localhost:3000/api/tickets')
+  const res = await fetch('https://crm-rosy.vercel.app/api/tickets')
   const tickets = await res.json()
 
   return {
