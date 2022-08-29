@@ -1,13 +1,15 @@
 import styles from '../styles/dashboard.module.css'
-import UserDisplay from './UserDisplay'
-import StatusDisplay from './StatusDisplay'
-import ProgressDisplay from './ProgressDisplay'
-import PriorityDisplay from './PriorityDisplay'
-import TitleDisplay from './TitleDisplay'
-import OwnerDisplay from './OwnerDisplay'
+
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Modal from './Modal'
+import dynamic from 'next/dynamic'
+const Modal = dynamic(() => import('./Modal'))
+const UserDisplay = dynamic(() => import('./UserDisplay'))
+const StatusDisplay = dynamic(() => import('./StatusDisplay'))
+const ProgressDisplay = dynamic(() => import('./ProgressDisplay'))
+const PriorityDisplay = dynamic(() => import('./PriorityDisplay'))
+const TitleDisplay = dynamic(() => import('./TitleDisplay'))
+const OwnerDisplay = dynamic(() => import('./OwnerDisplay'))
 
 const Ticket = ({ ticket }) => {
   const [modaltrigger, setModal] = useState(false)

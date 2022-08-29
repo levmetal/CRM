@@ -4,8 +4,10 @@ import { v4 as uuidv4 } from 'uuid'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 
+
 const TicketView = () => {
   const router = useRouter()
+  const dinamicRoute= router.asPath
   const [formData, setFormData] = useState({
     category: '',
     priority: '',
@@ -20,14 +22,16 @@ const TicketView = () => {
   const [isSubmiting, setSubmiting] = useState(false)
   const [errors, setErrors] = useState({})
 
-  const getTicket = async () => {
-   
+   const getTicket = async () => {
+  
 
     const res = await fetch(
       `/api/tickets/${router.query.id}`,
     )
     const data = await res.json()
-    setFormData({
+    
+      
+      setFormData({
       category: data.category,
       priority: data.priority,
       owner: data.owner,
@@ -38,10 +42,24 @@ const TicketView = () => {
       avatar: data.avatar,
     })
   }
+   const clean=()=>{
+    setFormData((prevState)=>({
+      ...prevState,
+      category: '',
+    priority: '',
+    owner: '',
+    title: '',
+    status: '',
+    progress: '',
+    description: '',
+    avatar: ''
+    }))
+  }
 
   useEffect(() => {
-    if (router.query.id) getTicket()
-  }, [])
+    router.query.id? getTicket():clean()
+    
+  }, [dinamicRoute])
 
   const handleChange = (e) => {
     const value = e.target.value
@@ -178,7 +196,7 @@ const TicketView = () => {
                   type="text"
                   onChange={handleChange}
                   name="owner"
-                  value={formData.owner}
+                  value=  {router.query.id ? formData.owner : ''}
                   placeholder="Owner"
                 />
                 {errors.owner && !formData.owner ? (
