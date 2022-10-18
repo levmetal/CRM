@@ -362,7 +362,7 @@ const TicketView = () => {
                   value={formData.status}
                   onChange={handleChange}
                 >
-                  <option selected> -- select an option -- </option>
+                  <option selected> -- Select an option -- </option>
 
                   <option defaultValue={formData.status === 'done'} name="done">
                     done
