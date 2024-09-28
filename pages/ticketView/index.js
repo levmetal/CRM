@@ -136,7 +136,7 @@ const TicketView = () => {
 
   const updateTicket = async () => {
     try {
-      await fetch(`api/tickets/${router.query.id}`, {
+      await fetch(`/api/tickets/${router.query.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
